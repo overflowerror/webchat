@@ -1,0 +1,40 @@
+CREATE TABLE `conversations` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `name` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `initUserFK` int(11) NOT NULL,
+  `initTime` int(11) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `messages` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `userFK` int(11) NOT NULL,
+  `conversationFK` int(11) NOT NULL,
+  `sentTime` int(11) NOT NULL,
+  `text` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `participants` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `conversationFK` int(11) NOT NULL,
+  `userFK` int(11) NOT NULL,
+  `joinTime` int(11) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `seenTimes` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `time` int(11) NOT NULL,
+  `userFK` int(11) NOT NULL,
+  `messageFK` int(11) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `users` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `username` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `password` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `regTime` int(11) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
